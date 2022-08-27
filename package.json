@@ -1,0 +1,28 @@
+{
+  "name": "hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "model-list.js",
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js",
+    "watch": "rollup -w -c ./rollup.config.js",
+    "tw-css": "npx tailwindcss -i ./static/css/style.css -o ./static/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "camera-controls": "^1.36.1",
+    "mapbox-gl": "^2.10.0",
+    "rollup": "^2.78.1",
+    "three": "^0.135.0",
+    "three-mesh-bvh": "^0.5.15",
+    "web-ifc-three": "^0.0.119",
+    "web-ifc-viewer": "^1.0.209"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "tailwindcss": "^3.1.8"
+  }
+}

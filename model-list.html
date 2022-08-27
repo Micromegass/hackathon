@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asgaard Glamping</title>
+    <link rel="icon" type="image/x-icon" href="./static/favicon.ico">
+    <link rel="stylesheet" href="static/css/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
+          rel="stylesheet">
+</head>
+<body class="grid place-items-center min-h-screen">
+
+<header>
+    <img class="spinning logo" src="./static/images/viking-helmet.jpg"
+         alt="Asgard Glamping Logo">
+</header>
+<div class="p-4 max-w-5xl grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6">
+    <h1 class="text-4xl font-extrabold xs:col-span-2 xs:grid xs:gap-4 xs:grid-cols-2 md:col-span-3 md:text-5xl md:grid-cols-3 lg:text-6xl">
+        <span class="md:col-span-2">
+        The Building Gallery of <i class="bear-buildings">Asgard Glamping</i>.
+        </span>
+    </h1>
+    <p class="xs:row-start-2 xs:col-start-2 xs:self-center md:col-start-1 md:col-span-2 md:pr-12 md:text-lg">
+        "Glamping" originates from the two words "glamorous" and "camping". Asgaard in
+        is a place where the Gods reside. At Asgard Glamping it is our objective to
+        build Glampings into nature, so you and/or your visitors can live like the Gods.
+    </p>
+    <div class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile"></div>
+    <div class="h-16 bg-cyan-400 sm:h-auto sm:square tile"></div>
+    <img src="./static/images/shed.png"
+         class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile tile-link"
+         onclick="location.href='./model-viewer.html?id=1'">
+    <div class="h-16 bg-blue-500 sm:h-auto sm:square tile"></div>
+    <div class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile"></div>
+    <img src="./static/images/cabin.png"
+         class="h-16 bg-blue-500 sm:h-auto sm:square tile tile-link"
+         onclick="location.href='./model-viewer.html?id=2'">
+    <div class="h-16 bg-blue-500 sm:h-auto sm:square tile"></div>
+    <img src="static/images/house.png"
+         class="h-16 bg-cyan-400 sm:h-auto sm:square tile tile-link"
+         onclick="location.href='./model-viewer.html?id=3'">
+    <p class="self-center md:text-lg md:col-span-3 md:text-end md:px-4">We currently offer
+        three types: "The Shed", "The Cabin" and the most
+        glamorous solution "The Villa". We already built each of them in
+        different parts of the world. Check the models and the maps for more!
+    </p>
+</div>
+
+<script type="module" src="./model-list.js"></script>
+</body>
+</html>
