@@ -175,49 +175,28 @@ button {
     padding: 1rem;
 }
 
-.card:hover {
-    transform: translateY(-1.5rem);
-    border: var(--light-blue) 0.1em solid;
-    border-radius: 2.5rem 0 2.5rem 0;
-    cursor: pointer;
-}
-
-.card:hover svg, .card:hover h2 {
-    fill: var(--light-blue);
-    color: var(--light-blue);
-}
-
-/* From uiverse.io */
 .button {
     padding: 0.7rem;
     font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
     color: #000;
-    background: var(--translucent-white);
-    backdrop-filter: var(--blur-filter);
+    background: lightyellow;
     border: none;
-    border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
-    outline: none;
     display: flex;
     align-items: center;
     width: fit-content;
 }
 
 .button:hover {
-    background-color: var(--light-blue);
+    background-color: var(--light-purple);
     box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
-    color: #fff;
-    fill: #fff;
-    transform: translateY(-7px);
+    transform: translateY(-10px);
 }
-
-.button:active {
-    transform: translateY(-1px);
+.active {
+    background-color: var(--light-purple);
+    transform: translateY(-10px);
 }
 
 .simple-card-container {

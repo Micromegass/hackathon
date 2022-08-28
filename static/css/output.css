@@ -611,6 +611,10 @@ video {
   position: relative;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -675,6 +679,10 @@ video {
   align-self: center;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -708,17 +716,44 @@ video {
   padding: 1rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .font-extrabold {
   font-weight: 800;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
 .lowercase {
   text-transform: lowercase;
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -731,6 +766,12 @@ video {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .outline {
@@ -962,36 +1003,15 @@ button {
   padding: 1rem;
 }
 
-.card:hover {
-  transform: translateY(-1.5rem);
-  border: var(--light-blue) 0.1em solid;
-  border-radius: 2.5rem 0 2.5rem 0;
-  cursor: pointer;
-}
-
-.card:hover svg, .card:hover h2 {
-  fill: var(--light-blue);
-  color: var(--light-blue);
-}
-
-/* From uiverse.io */
-
 .button {
   padding: 0.7rem;
   font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
   color: #000;
-  background: var(--translucent-white);
-  -webkit-backdrop-filter: var(--blur-filter);
-          backdrop-filter: var(--blur-filter);
+  background: lightyellow;
   border: none;
-  border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   cursor: pointer;
-  outline: none;
   display: flex;
   align-items: center;
   width: -webkit-fit-content;
@@ -1000,15 +1020,14 @@ button {
 }
 
 .button:hover {
-  background-color: var(--light-blue);
+  background-color: var(--light-purple);
   box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
-  color: #fff;
-  fill: #fff;
-  transform: translateY(-7px);
+  transform: translateY(-10px);
 }
 
-.button:active {
-  transform: translateY(-1px);
+.active {
+  background-color: var(--light-purple);
+  transform: translateY(-10px);
 }
 
 .simple-card-container {

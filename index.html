@@ -12,6 +12,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
           rel="stylesheet">
 </head>
+
+<style>
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .container:hover .image {
+        opacity: 0.3;
+    }
+
+    .container:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: #04AA6D;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+</style>
+
 <body class="grid place-items-center min-h-screen">
 
 <header>
@@ -25,9 +63,12 @@
         </span>
     </h1>
     <p class="xs:row-start-2 xs:col-start-2 xs:self-center md:col-start-1 md:col-span-2 md:pr-12 md:text-lg">
-        "Glamping" originates from the two words "glamorous" and "camping". Asgaard in
-        is a place where the Gods reside. At Asgard Glamping it is our objective to
-        build Glampings into nature, so you and/or your visitors can live like the Gods.
+        "Glamping" originates from the two words "glamorous" and "camping".
+        Asgaard in
+        is a place where the Gods reside. At Asgard Glamping it is our
+        objective to
+        build Glampings into nature, so you and/or your visitors can live like
+        the Gods.
     </p>
     <div class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile"></div>
     <div class="h-16 bg-cyan-400 sm:h-auto sm:square tile"></div>
@@ -43,11 +84,22 @@
     <img src="static/images/house.png"
          class="h-16 bg-cyan-400 sm:h-auto sm:square tile tile-link"
          onclick="location.href='./model-viewer.html?id=3'">
-    <p class="self-center md:text-lg md:col-span-3 md:text-end md:px-4">We currently offer
+    <p class="self-center md:text-lg md:col-span-3 md:text-end md:px-4">We
+        currently offer
         three types: "The Shed", "The Cabin" and the most
         glamorous solution "The Villa". We already built each of them in
         different parts of the world. Check the models and the maps for more!
     </p>
+</div>
+
+<div class="disclaimer rounded overflow-hidden shadow-lg pb-5 pt-5">
+    <div class="px-6">
+        <div class="font-bold mb-2">Disclaimer</div>
+        <p class="text-gray-700 text-base">
+            This project is purely fictional. A special thanks to John Luttropp
+            for granting me the usage of his building models.
+        </p>
+    </div>
 </div>
 
 <script type="module" src="./model-list.js"></script>
