@@ -7,7 +7,6 @@ const currentUrl = window.location.href;
 const url = new URL(currentUrl);
 const currentProjectID = url.searchParams.get("id");
 const currentProject = projects.find(project => project.id === currentProjectID);
-console.log(currentProject)
 
 
 const container = document.getElementById("viewer-container")
@@ -24,29 +23,32 @@ await loadIfc(currentProject.url)
 //button logic clipper
 const clipperButton = document.getElementById("clipper-button");
 let clippingPlanesActive = false
+
 clipperButton.onclick = () => {
     clippingPlanesActive = !clippingPlanesActive
     viewer.clipper.active = clippingPlanesActive
-
     if (clippingPlanesActive) {
         clipperButton.classList.add("active")
     } else {
         clipperButton.classList.remove("active")
     }
 }
-// window.onkeydown = (event) => {
-//     if (event.code === "Delete" && clippingPlanesActive) {
-//         viewer.clipper.deletePlane();
-//     }
-// }
+window.ondblclick = () => {
+    if(clippingPlanesActive) {
+        viewer.clipper.createPlane()
+    }
+}
+window.onkeydown = (event) => {
+    if (event.code === "Delete" && clippingPlanesActive) {
+        viewer.clipper.deletePlane();
+    }
+}
 
 
 // button logic picking
 let pickerButtonActive = false
-
 function handlePicking() {
     if (!pickerButtonActive) {
-        console.log("active")
         window.onclick = async () => {
             const result = await viewer.IFC.selector.pickIfcItem();
             if (!result) return;
@@ -85,10 +87,12 @@ function handleDrawing() {
                 viewer.dimensions.delete();
             }
         }
+        pickerButton.classList.add("active")
     } else {
         drawingActive = false
         viewer.dimensions.active = false;
         viewer.dimensions.previewActive = false;
+        pickerButton.classList.remove("active")
     }
 }
 const drawButton = document.getElementById("drawButton");
@@ -119,4 +123,12 @@ async function loadIfc(url) {
 }
 
 
+const credit = document.getElementById("credit");
 
+if (currentProjectID === "1") {
+    credit.innerHTML = "Model Diamond Cabin. SketchUp Model: John Luttropp"
+} else if  (currentProjectID === "2") {
+    credit.innerHTML = "Model House. Architect: Albrecht Heubner; SketchUp Model: John Luttropp"
+} else if (currentProjectID === "3") {
+    credit.innerHTML = "Model Shed. SketchUp Model: SketchUp Labs"
+}

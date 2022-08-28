@@ -833,6 +833,12 @@ body {
   padding: 0;
 }
 
+#credit{
+  position: absolute;
+  left: 4%;
+  bottom: 1rem;
+}
+
 #map {
   position: absolute;
   top: 0;
@@ -1179,3 +1185,4 @@ circle {
     line-height: 1;
   }
 }
+
