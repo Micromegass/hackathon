@@ -121969,7 +121969,6 @@ function handlePicking() {
         };
     } else {
         window.onclick = async () => {
-            console.log("not-active");
             await viewer.IFC.selector.unpickIfcItems();
             pickerButton.classList.remove("active");
             pickerButtonActive = false;
