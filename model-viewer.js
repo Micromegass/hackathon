@@ -23,7 +23,6 @@ await loadIfc(currentProject.url)
 //button logic clipper
 const clipperButton = document.getElementById("clipper-button");
 let clippingPlanesActive = false
-
 clipperButton.onclick = () => {
     clippingPlanesActive = !clippingPlanesActive
     viewer.clipper.active = clippingPlanesActive
@@ -43,7 +42,6 @@ window.onkeydown = (event) => {
         viewer.clipper.deletePlane();
     }
 }
-
 
 // button logic picking
 let pickerButtonActive = false
