@@ -1,7 +1,7 @@
 import {projects} from "./projects.js";
 import {IfcViewerAPI} from "web-ifc-viewer";
 import {Color} from "three"
-
+import {MeshBasicMaterial} from "three";
 
 const currentUrl = window.location.href;
 const url = new URL(currentUrl);
@@ -43,11 +43,14 @@ window.onkeydown = (event) => {
     }
 }
 
+
+const selectMaterial = new MeshBasicMaterial({color: 'orange'});
 // button logic picking
 let pickerButtonActive = false
 function handlePicking() {
     if (!pickerButtonActive) {
         window.onclick = async () => {
+            viewer.IFC.selector.selection.material = selectMaterial
             const result = await viewer.IFC.selector.pickIfcItem();
             if (!result) return;
             const {modelID, id} = result;
