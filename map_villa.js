@@ -8,16 +8,25 @@ import {
 } from "three";
 import {IFCLoader} from "web-ifc-three";
 
-
-function create_map_house(zoom, coordinates, linkToProject) {
+function create_map_villa(zoom, coordinates, linkToProject) {
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-streets-v11',
+        style: 'mapbox://styles/mapbox/navigation-night-v1',
         zoom: zoom,
         center: coordinates,
         pitch: 60,
         antialias: true
     });
+    const popup = new mapboxgl.Popup({closeOnClick: false})
+        .setLngLat(coordinates)
+        .setHTML('<div>Villa in Akigase Park (Japan)</div>')
+        .addTo(map);
+
+    function rotateCamera(timestamp) {
+        map.rotateTo((timestamp / 100) % 360, {duration: 0});
+        requestAnimationFrame(rotateCamera);
+    }
+
     const modelOrigin = coordinates;
     const modelAltitude = 0;
     const modelRotate = [Math.PI / 2, 0, 0];
@@ -25,7 +34,6 @@ function create_map_house(zoom, coordinates, linkToProject) {
         modelOrigin,
         modelAltitude
     );
-
     const modelTransform = {
         translateX: modelAsMercatorCoordinate.x,
         translateY: modelAsMercatorCoordinate.y,
@@ -87,7 +95,6 @@ function create_map_house(zoom, coordinates, linkToProject) {
                 .multiply(rotationX)
                 .multiply(rotationY)
                 .multiply(rotationZ);
-
             this.camera.projectionMatrix = m.multiply(l);
             this.renderer.resetState();
             this.renderer.render(this.scene, this.camera);
@@ -98,6 +105,7 @@ function create_map_house(zoom, coordinates, linkToProject) {
         map.addLayer(customLayer, 'waterway-label');
     });
     map.on('load', () => {
+        rotateCamera(0);
         const layers = map.getStyle().layers;
         const labelLayerId = layers.find(
             (layer) => layer.type === 'symbol' && layer.layout['text-field']
@@ -147,4 +155,4 @@ function create_map_house(zoom, coordinates, linkToProject) {
     }
 }
 
-export {create_map_house}
+export {create_map_villa}

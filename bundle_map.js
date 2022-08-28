@@ -101833,7 +101833,7 @@ class IFCLoader extends Loader {
 
 }
 
-function create_map_cabin(zoom, coordinates, linkToProject) {
+function create_map_villa(zoom, coordinates, linkToProject) {
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/navigation-night-v1',
@@ -101844,7 +101844,7 @@ function create_map_cabin(zoom, coordinates, linkToProject) {
     });
     new mapboxgl.Popup({closeOnClick: false})
         .setLngLat(coordinates)
-        .setHTML('<div>Cabin in Akigase Park (Japan)</div>')
+        .setHTML('<div>Villa in Akigase Park (Japan)</div>')
         .addTo(map);
 
     function rotateCamera(timestamp) {
@@ -101980,10 +101980,10 @@ function create_map_cabin(zoom, coordinates, linkToProject) {
     }
 }
 
-function create_map_house(zoom, coordinates, linkToProject) {
+function create_map_cabin(zoom, coordinates, linkToProject) {
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-streets-v11',
+        style: 'mapbox://styles/mapbox/navigation-day-v1',
         zoom: zoom,
         center: coordinates,
         pitch: 60,
@@ -101997,174 +101997,11 @@ function create_map_house(zoom, coordinates, linkToProject) {
         modelAltitude
     );
 
-    const modelTransform = {
-        translateX: modelAsMercatorCoordinate.x,
-        translateY: modelAsMercatorCoordinate.y,
-        translateZ: modelAsMercatorCoordinate.z,
-        rotateX: modelRotate[0],
-        rotateY: modelRotate[1],
-        rotateZ: modelRotate[2],
-        scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
-    };
-    const customLayer = {
-        id: '3d-model',
-        type: 'custom',
-        renderingMode: '3d',
-        onAdd: function (map, gl) {
-            this.camera = new Camera();
-            this.scene = new Scene();
-            loadModel(this.scene);
-            const directionalLight = new DirectionalLight(0xffffff);
-            directionalLight.position.set(0, -70, 100).normalize();
-            this.scene.add(directionalLight);
-            const directionalLight2 = new DirectionalLight(0xffffff);
-            directionalLight2.position.set(0, 70, 100).normalize();
-            this.scene.add(directionalLight2);
-            this.map = map;
-            this.renderer = new WebGLRenderer({
-                canvas: map.getCanvas(),
-                context: gl,
-                antialias: true
-            });
-            this.renderer.autoClear = false;
-        },
-        render: function (gl, matrix) {
-            const rotationX = new Matrix4().makeRotationAxis(
-                new Vector3$1(1, 0, 0),
-                modelTransform.rotateX
-            );
-            const rotationY = new Matrix4().makeRotationAxis(
-                new Vector3$1(0, 1, 0),
-                modelTransform.rotateY
-            );
-            const rotationZ = new Matrix4().makeRotationAxis(
-                new Vector3$1(0, 0, 1),
-                modelTransform.rotateZ
-            );
-            const m = new Matrix4().fromArray(matrix);
-            const l = new Matrix4()
-                .makeTranslation(
-                    modelTransform.translateX,
-                    modelTransform.translateY,
-                    modelTransform.translateZ
-                )
-                .scale(
-                    new Vector3$1(
-                        modelTransform.scale,
-                        -modelTransform.scale,
-                        modelTransform.scale
-                    )
-                )
-                .multiply(rotationX)
-                .multiply(rotationY)
-                .multiply(rotationZ);
-
-            this.camera.projectionMatrix = m.multiply(l);
-            this.renderer.resetState();
-            this.renderer.render(this.scene, this.camera);
-            this.map.triggerRepaint();
-        }
-    };
-    map.on('style.load', () => {
-        map.addLayer(customLayer, 'waterway-label');
-    });
-    map.on('load', () => {
-        const layers = map.getStyle().layers;
-        const labelLayerId = layers.find(
-            (layer) => layer.type === 'symbol' && layer.layout['text-field']
-        ).id;
-        map.addLayer(
-            {
-                'id': 'add-3d-buildings',
-                'source': 'composite',
-                'source-layer': 'building',
-                'filter': ['==', 'extrude', 'true'],
-                'type': 'fill-extrusion',
-                'minzoom': 15,
-                'paint': {
-                    'fill-extrusion-color': '#aaa',
-                    'fill-extrusion-height': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'height']
-                    ],
-                    'fill-extrusion-base': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'min_height']
-                    ],
-                    'fill-extrusion-opacity': 0.6
-                }
-            },
-            labelLayerId
-        );
-    });
-
-    async function loadModel(scene) {
-        const loader = new IFCLoader();
-        await loader.ifcManager.setWasmPath("./wasm/");
-        const model = await loader.loadAsync(linkToProject);
-        scene.add(model);
-        const loadingScreen = document.getElementById("loader-container");
-        loadingScreen.classList.add("hidden");
-    }
-}
-
-/*!
- * camera-controls
- * https://github.com/yomotsu/camera-controls
- * (c) 2017 @yomotsu
- * Released under the MIT License.
- */
-Object.freeze({
-    NONE: 0,
-    ROTATE: 1,
-    TRUCK: 2,
-    OFFSET: 4,
-    DOLLY: 8,
-    ZOOM: 16,
-    TOUCH_ROTATE: 32,
-    TOUCH_TRUCK: 64,
-    TOUCH_OFFSET: 128,
-    TOUCH_DOLLY: 256,
-    TOUCH_ZOOM: 512,
-    TOUCH_DOLLY_TRUCK: 1024,
-    TOUCH_DOLLY_OFFSET: 2048,
-    TOUCH_ZOOM_TRUCK: 4096,
-    TOUCH_ZOOM_OFFSET: 8192,
-});
-
-const isBrowser = typeof window !== 'undefined';
-isBrowser && /Mac/.test(navigator.platform);
-
-function create_map_shed(zoom, coordinates, linkToProject) {
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        zoom: zoom,
-        center: coordinates,
-        pitch: 60,
-        antialias: true
-    });
-    new mapboxgl.Popup({closeOnClick: false})
+     new mapboxgl.Popup({closeOnClick: false})
         .setLngLat(coordinates)
-        .setHTML('<div>Tiny House in Nürnberg (Germany)</div>')
+        .setHTML('<div>Cabin in San Vicente (Colombia)</div>')
         .addTo(map);
-    const modelOrigin = coordinates;
-    const modelAltitude = 0;
-    const modelRotate = [Math.PI / 2, 0, 0];
-    const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
-        modelOrigin,
-        modelAltitude
-    );
+
     const modelTransform = {
         translateX: modelAsMercatorCoordinate.x,
         translateY: modelAsMercatorCoordinate.y,
@@ -102194,7 +102031,6 @@ function create_map_shed(zoom, coordinates, linkToProject) {
                 context: gl,
                 antialias: true
             });
-
             this.renderer.autoClear = false;
         },
         render: function (gl, matrix) {
@@ -102227,6 +102063,7 @@ function create_map_shed(zoom, coordinates, linkToProject) {
                 .multiply(rotationX)
                 .multiply(rotationY)
                 .multiply(rotationZ);
+
             this.camera.projectionMatrix = m.multiply(l);
             this.renderer.resetState();
             this.renderer.render(this.scene, this.camera);
@@ -102314,16 +102151,12 @@ let coordinates;
 let zoom;
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhdW5zY2h3ZWlnZXIiLCJhIjoiY2w3OWJxNW9lMDJ0bzN2cHVndXQ4Mng0eCJ9.DXHTQQSp-pTqaKNp1Ma29A';
 
-if (currentProjectID === "2") {
+if (currentProjectID === "1") {
     coordinates = [139.60581970441717, 35.84818561338292];
     zoom = 16.5;
-    create_map_cabin(zoom, coordinates, linkToProject);
-} else if (currentProjectID === "3") {
+    create_map_villa(zoom, coordinates, linkToProject);
+} else if (currentProjectID === "2") {
     coordinates = [-75.33217575906961, 6.288372749267765];
     zoom = 18.5;
-    create_map_house(zoom, coordinates, linkToProject);
-} else if (currentProjectID === "1") {
-     coordinates = [11.133813913357539, 49.46865142763179];
-     zoom = 16;
-     create_map_shed(zoom, coordinates, linkToProject);
+    create_map_cabin(zoom, coordinates, linkToProject);
 }

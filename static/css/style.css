@@ -40,7 +40,9 @@ body {
     width: 100%;
 }
 
-
+.disclaimer {
+    max-width: 50%;
+}
 .mapboxgl-popup-content {
     background: var(--translucent-white);
 }
