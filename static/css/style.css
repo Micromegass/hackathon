@@ -39,7 +39,9 @@ body {
 
     width: 100%;
 }
-
+a {
+    color: darkcyan !important;
+}
 .disclaimer {
     max-width: 50%;
 }
@@ -235,7 +237,6 @@ circle {
         stroke-dashoffset: -125px;
     }
 }
-
 #loader-container {
     position: fixed;
     z-index: 999;
@@ -245,6 +246,11 @@ circle {
     align-items: center;
     justify-content: center;
     background-color: black;
+    flex-direction: column;
+    color: #ffffff;
+}
+#loader-container * {
+    margin: 8px;
 }
 
 .hidden {

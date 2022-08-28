@@ -7,11 +7,13 @@
     <title>Asgaard Glamping</title>
     <link rel="icon" type="image/x-icon"
           href="./static/images/viking-helmet.jpg">
-    <link rel="stylesheet" href="static/css/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap"
           rel="stylesheet">
+   <link rel="stylesheet"
+          href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css"/>
+    <link rel="stylesheet" href="static/css/output.css">
 </head>
 
 <body class="grid place-items-center min-h-screen">
@@ -20,9 +22,9 @@
     <img class="logo" src="./static/images/viking-helmet.jpg"
          alt="Asgard Glamping Logo">
 </header>
-<div class="p-4 max-w-5xl grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6">
+<div class="mt-5p-4 max-w-5xl grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6">
     <h1 class="text-4xl font-extrabold xs:col-span-2 xs:grid xs:gap-4 xs:grid-cols-2 md:col-span-3 md:text-5xl md:grid-cols-3 lg:text-6xl">
-        <span class="md:col-span-2">
+        <span class="mt-5 md:col-span-2">
         The Building Gallery of <i class="bear-buildings">Asgard Glamping</i>.
         </span>
     </h1>
@@ -30,24 +32,24 @@
         At Asgard Glamping we build houses in nature so you and or your vistors
         can live like the Gods. We currently offer 2 types of construction
         types,
-        the cabin and the villa.
+        the Cabin and the Villa.
     </p>
     <div class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile"></div>
-    <img src="static/images/mapvilla.png"
+    <img src="static/images/mapvilla.png" data-tooltip-target="tooltip-map-villa"
          class="h-16 bg-cyan-400 sm:h-auto sm:square tile tile-link"
          onclick="location.href='./map.html?id=1'">
     <div class="h-16 bg-cyan-400 sm:h-auto sm:square tile"></div>
     <div class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile"></div>
-    <img src="./static/images/cabin.png"
+    <img src="./static/images/cabin.png" data-tooltip-target="tooltip-detail-cabin"
          class="h-16 bg-blue-500 sm:h-auto sm:square tile tile-link"
-         onclick="location.href='./model-viewer.html?id=2'">
+         onclick="location.href='./model-viewer.html?id=1'">
     <div class="h-16 bg-fuchsia-600 sm:h-auto sm:square tile"></div>
-    <img src="static/images/mapcabin.png"
+    <img src="static/images/mapcabin.png" data-tooltip-target="tooltip-map-cabin"
          class="h-16 bg-cyan-400 sm:h-auto sm:square tile tile-link"
          onclick="location.href='./map.html?id=2'">
-    <img src="static/images/house.png"
+    <img src="static/images/house.png" data-tooltip-target="tooltip-detail-villa"
          class="h-16 bg-cyan-400 sm:h-auto sm:square tile tile-link"
-         onclick="location.href='./model-viewer.html?id=3'">
+         onclick="location.href='./model-viewer.html?id=2'">
     <p class="self-center md:text-lg md:col-span-3 md:text-end md:px-4">
         We have built both already in different parts of the world.
         Navigate via the images to the respective detail and map views.
@@ -67,7 +69,5 @@
         </p>
     </div>
 </div>
-
-<script type="module" src="./model-list.js"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@
     <svg id="loader" viewBox="25 25 50 50">
         <circle r="20" cy="50" cx="50"></circle>
     </svg>
+    <p id="progress-text">Loading the model... </p>
 </div>
 
 <div id="credit" class="overflow-hidden text-gray-700"></div>
@@ -48,13 +49,16 @@
 
 <div class="simple-card-container bottom">
     <div class="toolbar">
-        <button id="pickerButton" class="button"  data-tooltip-target="tooltip-picker">
+        <button id="pickerButton" class="button"
+                data-tooltip-target="tooltip-picker">
             <i class="fa-solid fa-highlighter"></i>
         </button>
-        <button id="clipper-button" class="button"  data-tooltip-target="tooltip-clipper">
+        <button id="clipper-button" class="button"
+                data-tooltip-target="tooltip-clipper">
             <i class="fa-solid fa-hand-scissors"></i>
         </button>
-        <button id="drawButton" class="button" data-tooltip-target="tooltip-draw">
+        <button id="drawButton" class="button"
+                data-tooltip-target="tooltip-draw">
             <i class="fa-solid fa-ruler"></i>
         </button>
         <button id="downloadButton" data-tooltip-target="tooltip-download"
@@ -67,17 +71,17 @@
         Download info as JSON
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
-     <div id="tooltip-draw" role="tooltip"
+    <div id="tooltip-draw" role="tooltip"
          class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-            Double click to draw on model
+        Double click to draw on model
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
-     <div id="tooltip-clipper" role="tooltip"
+    <div id="tooltip-clipper" role="tooltip"
          class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
         Double click to clip model
         <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
-     <div id="tooltip-picker" role="tooltip"
+    <div id="tooltip-picker" role="tooltip"
          class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
         Click to select items
         <div class="tooltip-arrow" data-popper-arrow></div>

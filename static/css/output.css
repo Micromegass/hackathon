@@ -741,10 +741,6 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -897,6 +893,10 @@ body {
   top: 0;
   bottom: 0;
   width: 100%;
+}
+
+a {
+  color: darkcyan !important;
 }
 
 .disclaimer {
@@ -1137,6 +1137,12 @@ circle {
   align-items: center;
   justify-content: center;
   background-color: black;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+#loader-container * {
+  margin: 8px;
 }
 
 .hidden {

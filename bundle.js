@@ -9,11 +9,6 @@ const projects = [
         id: "2",
         url: "https://hackathon-ifc.s3.amazonaws.com/House.ifc"
     },
-    {
-        name: "Model 3",
-        id: "3",
-        url: "https://hackathon-ifc.s3.amazonaws.com/Shed.ifc"
-    }
 ];
 
 var NavigationModes;
