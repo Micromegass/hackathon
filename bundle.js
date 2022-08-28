@@ -121922,7 +121922,6 @@ const viewer = new IfcViewerAPI({
 viewer.axes.setAxes();
 viewer.grid.setGrid();
 
-
 await loadIfc(currentProject.url);
 
 //button logic clipper
